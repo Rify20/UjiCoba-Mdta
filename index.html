@@ -1,88 +1,22 @@
-
-// ===============================
-// KONFIG (gampang diedit)
-// ===============================
-$site = [
-  "name" => "Pondok Pesantren Uluwiyah",
-  "tagline" => "Situs resmi Yayasan Pondok Pesantren Pendidikan Uluwiyah",
-  "cta_text" => "Daftarkan Dirimu Menjadi Siswa/i",
-  "cta_button" => "Pendaftaran",
-  "cta_link" => "https://www.pondokpesantrenuluwiyah.ponpes.id/pendaftaran/",
-
-  "top_links" => [
-    ["label" => "Pondok Pesantren Uluwiyah", "href" => "https://www.pondokpesantrenuluwiyah.ponpes.id/"],
-    ["label" => "Info Pendaftaran", "href" => "https://www.pondokpesantrenuluwiyah.ponpes.id/pendaftaran/"],
-  ],
-
-  "nav" => [
-    ["label" => "Beranda", "href" => "#home"],
-    ["label" => "Tentang Kami", "dropdown" => [
-      ["label" => "Profil Kami", "href" => "#profil"],
-      ["label" => "Visi & Misi", "href" => "#visi"],
-      ["label" => "Sarana & Prasarana", "href" => "#sarana"],
-      ["label" => "Alamat", "href" => "#kontak"],
-    ]],
-    ["label" => "Program Pendidikan", "href" => "#program"],
-    ["label" => "Pendaftaran", "dropdown" => [
-      ["label" => "Informasi Pendaftaran", "href" => "#pendaftaran"],
-      ["label" => "Form Pendaftaran (Google Form)", "href" => "https://forms.gle/", "external" => true],
-    ]],
-    ["label" => "Galeri", "href" => "#galeri"],
-    ["label" => "Berita", "href" => "#berita"],
-  ],
-
-  "contact" => [
-    "address" => "Jl. Raya Mojosari – Mojokerto KM. 4 No 10, Mojolegi Modopuro, Mojosari, Mojokerto, Jawa Timur",
-    "phone1"  => "085857595913",
-    "phone2"  => "081459094062",
-    "telp"    => "(0321) 592783",
-    "email"   => "pesantrenuluwiyah@gmail.com",
-    "wa1"     => "https://api.whatsapp.com/send?phone=6285857595913",
-    "wa2"     => "https://api.whatsapp.com/send?phone=6281459094062",
-  ],
-
-  "registration_waves" => [
-    ["label" => "Gelombang 1", "date" => "1 Jan – 31 Mar 2026"],
-    ["label" => "Gelombang 2", "date" => "1 Apr – 31 Mei 2026"],
-    ["label" => "Gelombang 3", "date" => "1 Jun – 14 Jul 2026"],
-  ],
-
-  // Contoh isi (silakan ganti dengan konten Anda sendiri)
-  "about" => "Lembaga pendidikan berbasis pesantren dengan pembinaan akhlak, ilmu agama, dan pengetahuan umum untuk menyiapkan generasi yang unggul dan berdaya saing.",
-  "program_formal" => ["MTs", "MA", "SMK", "Perguruan Tinggi"],
-  "program_nonformal" => ["Madrasah Diniyah Takmiliyah", "Madin Ula", "Madin Wustho", "Madin Ulya"],
-
-  "vision" => "Mencetak generasi yang unggul dalam prestasi berdasarkan iman, taqwa, cerdas, tanggap, cakap, terampil, berakhlakul karimah.",
-];
-
-// Contoh data berita (statik)
-$news = [
-  ["date" => "22 Jan 2026", "title" => "Agenda Tahunan Kegiatan Santri", "excerpt" => "Ringkasan singkat berita kegiatan terbaru. Ganti sesuai kebutuhan.", "link" => "#"],
-  ["date" => "4 Jun 2025", "title" => "Ujian Akhir Santri", "excerpt" => "Ringkasan singkat berita ujian akhir. Ganti sesuai kebutuhan.", "link" => "#"],
-  ["date" => "22 Des 2024", "title" => "Ziarah Wali (Agenda Tahunan)", "excerpt" => "Ringkasan singkat agenda tahunan. Ganti sesuai kebutuhan.", "link" => "#"],
-  ["date" => "13 Des 2024", "title" => "Kunjungan & Silaturahmi", "excerpt" => "Ringkasan singkat kunjungan. Ganti sesuai kebutuhan.", "link" => "#"],
-];
-
-function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
-?>
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= h($site["name"]) ?> — Landing Page</title>
-  <meta name="description" content="<?= h($site["tagline"]) ?>">
-  <meta property="og:title" content="<?= h($site["name"]) ?>">
-  <meta property="og:description" content="<?= h($site["tagline"]) ?>">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/img/og.jpg">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pondok Pesantren Uluwiyah — Landing Page</title>
+  <meta name="description" content="Situs resmi Yayasan Pondok Pesantren Pendidikan Uluwiyah" />
+
+  <meta property="og:title" content="Pondok Pesantren Uluwiyah" />
+  <meta property="og:description" content="Situs resmi Yayasan Pondok Pesantren Pendidikan Uluwiyah" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/og.jpg" />
 
   <!-- Bootstrap 5 (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body id="home">
@@ -91,12 +25,11 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
     <div class="container py-2 d-flex flex-wrap gap-3 justify-content-between align-items-center">
       <div class="d-flex align-items-center gap-2">
         <i class="bi bi-mosque"></i>
-        <span class="small text-muted"><?= h($site["tagline"]) ?></span>
+        <span class="small text-muted">Situs resmi Yayasan Pondok Pesantren Pendidikan Uluwiyah</span>
       </div>
       <div class="d-flex gap-3">
-        <?php foreach($site["top_links"] as $l): ?>
-          <a class="small link-muted" href="<?= h($l["href"]) ?>" target="_blank" rel="noopener"><?= h($l["label"]) ?></a>
-        <?php endforeach; ?>
+        <a class="small link-muted" href="https://www.pondokpesantrenuluwiyah.ponpes.id/" target="_blank" rel="noopener">Pondok Pesantren Uluwiyah</a>
+        <a class="small link-muted" href="https://www.pondokpesantrenuluwiyah.ponpes.id/pendaftaran/" target="_blank" rel="noopener">Info Pendaftaran</a>
       </div>
     </div>
   </div>
@@ -107,7 +40,7 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
       <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
         <img src="assets/img/logo.png" alt="Logo" class="brand-logo" onerror="this.style.display='none'">
         <div class="lh-sm">
-          <div class="fw-bold"><?= h($site["name"]) ?></div>
+          <div class="fw-bold">Pondok Pesantren Uluwiyah</div>
           <div class="brand-subtitle">Mojosari • Mojokerto</div>
         </div>
       </a>
@@ -118,33 +51,34 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
 
       <div id="mainNav" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <?php foreach($site["nav"] as $item): ?>
-            <?php if(isset($item["dropdown"])): ?>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                  <?= h($item["label"]) ?>
-                </a>
-                <ul class="dropdown-menu">
-                  <?php foreach($item["dropdown"] as $dd): ?>
-                    <li>
-                      <a class="dropdown-item" href="<?= h($dd["href"]) ?>"
-                         <?= !empty($dd["external"]) ? 'target="_blank" rel="noopener"' : '' ?>>
-                        <?= h($dd["label"]) ?>
-                      </a>
-                    </li>
-                  <?php endforeach; ?>
-                </ul>
-              </li>
-            <?php else: ?>
-              <li class="nav-item">
-                <a class="nav-link" href="<?= h($item["href"]) ?>"><?= h($item["label"]) ?></a>
-              </li>
-            <?php endif; ?>
-          <?php endforeach; ?>
+          <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Tentang Kami</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#profil">Profil Kami</a></li>
+              <li><a class="dropdown-item" href="#visi">Visi & Misi</a></li>
+              <li><a class="dropdown-item" href="#sarana">Sarana & Prasarana</a></li>
+              <li><a class="dropdown-item" href="#kontak">Alamat</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="#program">Program Pendidikan</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pendaftaran</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#pendaftaran">Informasi Pendaftaran</a></li>
+              <li><a class="dropdown-item" href="https://forms.gle/" target="_blank" rel="noopener">Form Pendaftaran (Google Form)</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="#berita">Berita</a></li>
         </ul>
 
         <a class="btn btn-primary ms-lg-3" href="#pendaftaran">
-          <i class="bi bi-megaphone me-1"></i> <?= h($site["cta_button"]) ?>
+          <i class="bi bi-megaphone me-1"></i> Pendaftaran
         </a>
       </div>
     </div>
@@ -160,31 +94,23 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
       </div>
 
       <div class="carousel-inner">
-        <?php for($i=1;$i<=3;$i++): ?>
-        <div class="carousel-item <?= $i===1?'active':'' ?>">
-          <div class="hero-slide" style="background-image:url('assets/img/hero-<?= $i ?>.jpg')">
+        <div class="carousel-item active">
+          <div class="hero-slide" style="background-image:url('assets/img/hero-1.jpg')">
             <div class="hero-overlay"></div>
             <div class="container">
               <div class="row">
                 <div class="col-lg-8">
                   <div class="hero-content">
-                    <div class="badge text-bg-light mb-3">
-                      <i class="bi bi-stars me-1"></i> Selamat datang
-                    </div>
-                    <h1 class="display-5 fw-bold mb-3"><?= h($site["name"]) ?></h1>
-                    <p class="lead mb-4">
-                      <?= h($site["tagline"]) ?> — pembinaan akhlak, ilmu agama, dan prestasi.
-                    </p>
+                    <div class="badge text-bg-light mb-3"><i class="bi bi-stars me-1"></i> Selamat datang</div>
+                    <h1 class="display-5 fw-bold mb-3">Pondok Pesantren Uluwiyah</h1>
+                    <p class="lead mb-4">Situs resmi Yayasan Pondok Pesantren Pendidikan Uluwiyah — pembinaan akhlak, ilmu agama, dan prestasi.</p>
                     <div class="d-flex flex-wrap gap-2">
-                      <a class="btn btn-primary btn-lg" href="#pendaftaran">
-                        <i class="bi bi-pencil-square me-1"></i> Info Pendaftaran
-                      </a>
-                      <a class="btn btn-outline-light btn-lg" href="#profil">
-                        <i class="bi bi-info-circle me-1"></i> Profil Singkat
-                      </a>
+                      <a class="btn btn-primary btn-lg" href="#pendaftaran"><i class="bi bi-pencil-square me-1"></i> Info Pendaftaran</a>
+                      <a class="btn btn-outline-light btn-lg" href="#profil"><i class="bi bi-info-circle me-1"></i> Profil Singkat</a>
                     </div>
                     <div class="hero-note mt-3">
-                      <i class="bi bi-geo-alt me-1"></i> <?= h($site["contact"]["address"]) ?>
+                      <i class="bi bi-geo-alt me-1"></i>
+                      Jl. Raya Mojosari – Mojokerto KM. 4 No 10, Mojolegi Modopuro, Mojosari, Mojokerto, Jawa Timur
                     </div>
                   </div>
                 </div>
@@ -192,7 +118,48 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
             </div>
           </div>
         </div>
-        <?php endfor; ?>
+
+        <div class="carousel-item">
+          <div class="hero-slide" style="background-image:url('assets/img/hero-2.jpg')">
+            <div class="hero-overlay"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="hero-content">
+                    <div class="badge text-bg-light mb-3"><i class="bi bi-stars me-1"></i> Pendidikan & Pembinaan</div>
+                    <h2 class="display-6 fw-bold mb-3">Akhlak • Ilmu • Prestasi</h2>
+                    <p class="lead mb-4">Program formal dan non-formal untuk membentuk generasi yang beriman, berilmu, dan berdaya saing.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <a class="btn btn-primary btn-lg" href="#program"><i class="bi bi-mortarboard me-1"></i> Program Pendidikan</a>
+                      <a class="btn btn-outline-light btn-lg" href="#kontak"><i class="bi bi-telephone me-1"></i> Kontak</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="hero-slide" style="background-image:url('assets/img/hero-3.jpg')">
+            <div class="hero-overlay"></div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="hero-content">
+                    <div class="badge text-bg-light mb-3"><i class="bi bi-stars me-1"></i> Gabung sekarang</div>
+                    <h2 class="display-6 fw-bold mb-3">Pendaftaran Santri</h2>
+                    <p class="lead mb-4">Lihat informasi pendaftaran dan jadwal gelombang penerimaan.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <a class="btn btn-primary btn-lg" href="#pendaftaran"><i class="bi bi-calendar2-check me-1"></i> Jadwal Gelombang</a>
+                      <a class="btn btn-outline-light btn-lg" href="#berita"><i class="bi bi-newspaper me-1"></i> Berita</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
@@ -211,8 +178,10 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
         <div class="col-lg-5">
           <div class="card h-100 card-soft">
             <div class="card-body">
-              <h2 class="h4 fw-bold mb-3">Tentang <?= h($site["name"]) ?></h2>
-              <p class="text-muted mb-4"><?= h($site["about"]) ?></p>
+              <h2 class="h4 fw-bold mb-3">Tentang Pondok Pesantren Uluwiyah</h2>
+              <p class="text-muted mb-4">
+                Lembaga pendidikan berbasis pesantren dengan pembinaan akhlak, ilmu agama, dan pengetahuan umum untuk menyiapkan generasi yang unggul dan berdaya saing.
+              </p>
               <a href="#visi" class="btn btn-outline-primary">
                 Detail Visi & Misi <i class="bi bi-arrow-right ms-1"></i>
               </a>
@@ -239,11 +208,11 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
                   <div class="icon-pill"><i class="bi bi-calendar2-check"></i></div>
                   <h3 class="h5 fw-bold mt-3">Informasi Pendaftaran</h3>
                   <ul class="small text-muted mb-3 ps-3">
-                    <?php foreach($site["registration_waves"] as $w): ?>
-                      <li><?= h($w["label"]) ?>: <?= h($w["date"]) ?></li>
-                    <?php endforeach; ?>
+                    <li>Gelombang 1: 1 Jan – 31 Mar 2026</li>
+                    <li>Gelombang 2: 1 Apr – 31 Mei 2026</li>
+                    <li>Gelombang 3: 1 Jun – 14 Jul 2026</li>
                   </ul>
-                  <a class="btn btn-primary btn-sm" href="<?= h($site["cta_link"]) ?>" target="_blank" rel="noopener">
+                  <a class="btn btn-primary btn-sm" href="https://www.pondokpesantrenuluwiyah.ponpes.id/pendaftaran/" target="_blank" rel="noopener">
                     Detail Pendaftaran <i class="bi bi-box-arrow-up-right ms-1"></i>
                   </a>
                 </div>
@@ -261,25 +230,30 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
                     </div>
                     <a class="btn btn-outline-primary" href="#program-detail">Detail Program</a>
                   </div>
+
                   <hr class="my-4">
+
                   <div id="program-detail" class="row g-3">
                     <div class="col-md-6">
                       <div class="p-3 rounded-3 bg-light h-100">
                         <div class="fw-semibold mb-2">Pendidikan Formal</div>
                         <div class="d-flex flex-wrap gap-2">
-                          <?php foreach($site["program_formal"] as $p): ?>
-                            <span class="badge text-bg-white border"><?= h($p) ?></span>
-                          <?php endforeach; ?>
+                          <span class="badge text-bg-white border">MTs</span>
+                          <span class="badge text-bg-white border">MA</span>
+                          <span class="badge text-bg-white border">SMK</span>
+                          <span class="badge text-bg-white border">Perguruan Tinggi</span>
                         </div>
                       </div>
                     </div>
+
                     <div class="col-md-6">
                       <div class="p-3 rounded-3 bg-light h-100">
                         <div class="fw-semibold mb-2">Pendidikan Non-Formal</div>
                         <div class="d-flex flex-wrap gap-2">
-                          <?php foreach($site["program_nonformal"] as $p): ?>
-                            <span class="badge text-bg-white border"><?= h($p) ?></span>
-                          <?php endforeach; ?>
+                          <span class="badge text-bg-white border">Madrasah Diniyah Takmiliyah</span>
+                          <span class="badge text-bg-white border">Madin Ula</span>
+                          <span class="badge text-bg-white border">Madin Wustho</span>
+                          <span class="badge text-bg-white border">Madin Ulya</span>
                         </div>
                       </div>
                     </div>
@@ -306,20 +280,57 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
       </div>
 
       <div class="row g-4">
-        <?php foreach($news as $n): ?>
-          <div class="col-md-6 col-lg-3">
-            <div class="card h-100 card-hover">
-              <div class="card-body">
-                <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i><?= h($n["date"]) ?></div>
-                <h3 class="h6 fw-bold"><?= h($n["title"]) ?></h3>
-                <p class="text-muted small mb-0"><?= h($n["excerpt"]) ?></p>
-              </div>
-              <div class="card-footer bg-transparent border-0 pt-0">
-                <a class="btn btn-sm btn-link px-0" href="<?= h($n["link"]) ?>">Baca</a>
-              </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 card-hover">
+            <div class="card-body">
+              <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i>22 Jan 2026</div>
+              <h3 class="h6 fw-bold">Agenda Tahunan Kegiatan Santri</h3>
+              <p class="text-muted small mb-0">Ringkasan singkat berita kegiatan terbaru. Ganti sesuai kebutuhan.</p>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+              <a class="btn btn-sm btn-link px-0" href="#">Baca</a>
             </div>
           </div>
-        <?php endforeach; ?>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 card-hover">
+            <div class="card-body">
+              <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i>4 Jun 2025</div>
+              <h3 class="h6 fw-bold">Ujian Akhir Santri</h3>
+              <p class="text-muted small mb-0">Ringkasan singkat berita ujian akhir. Ganti sesuai kebutuhan.</p>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+              <a class="btn btn-sm btn-link px-0" href="#">Baca</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 card-hover">
+            <div class="card-body">
+              <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i>22 Des 2024</div>
+              <h3 class="h6 fw-bold">Ziarah Wali (Agenda Tahunan)</h3>
+              <p class="text-muted small mb-0">Ringkasan singkat agenda tahunan. Ganti sesuai kebutuhan.</p>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+              <a class="btn btn-sm btn-link px-0" href="#">Baca</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card h-100 card-hover">
+            <div class="card-body">
+              <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i>13 Des 2024</div>
+              <h3 class="h6 fw-bold">Kunjungan & Silaturahmi</h3>
+              <p class="text-muted small mb-0">Ringkasan singkat kunjungan. Ganti sesuai kebutuhan.</p>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+              <a class="btn btn-sm btn-link px-0" href="#">Baca</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -330,12 +341,12 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
       <div class="cta-box">
         <div class="row g-3 align-items-center">
           <div class="col-lg-8">
-            <h2 class="h3 fw-bold mb-1"><?= h($site["cta_text"]) ?></h2>
-            <p class="mb-0 text-muted"><?= h($site["name"]) ?> — informasi pendaftaran & kontak admin.</p>
+            <h2 class="h3 fw-bold mb-1">Daftarkan Dirimu Menjadi Siswa/i</h2>
+            <p class="mb-0 text-muted">Pondok Pesantren Uluwiyah — informasi pendaftaran & kontak admin.</p>
           </div>
           <div class="col-lg-4 text-lg-end">
-            <a class="btn btn-primary btn-lg" href="<?= h($site["cta_link"]) ?>" target="_blank" rel="noopener">
-              <i class="bi bi-box-arrow-up-right me-1"></i> <?= h($site["cta_button"]) ?>
+            <a class="btn btn-primary btn-lg" href="https://www.pondokpesantrenuluwiyah.ponpes.id/pendaftaran/" target="_blank" rel="noopener">
+              <i class="bi bi-box-arrow-up-right me-1"></i> Pendaftaran
             </a>
           </div>
         </div>
@@ -352,17 +363,30 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
       </div>
 
       <div class="row g-3">
-        <?php for($i=1;$i<=4;$i++): ?>
-          <div class="col-6 col-lg-3">
-            <a class="gallery-item" href="assets/img/gallery-<?= $i ?>.jpg" target="_blank" rel="noopener">
-              <img src="assets/img/gallery-<?= $i ?>.jpg" class="img-fluid rounded-3" alt="Galeri <?= $i ?>"
-                   onerror="this.src='data:image/svg+xml;charset=UTF-8,<?=
-                     rawurlencode('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"800\" height=\"600\"><rect width=\"100%\" height=\"100%\" fill=\"#f1f3f5\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"#868e96\" font-family=\"Arial\" font-size=\"24\">Gambar Galeri</text></svg>')
-                   ?>';">
-              <span class="gallery-badge"><i class="bi bi-search"></i></span>
-            </a>
-          </div>
-        <?php endfor; ?>
+        <div class="col-6 col-lg-3">
+          <a class="gallery-item" href="assets/img/gallery-1.jpg" target="_blank" rel="noopener">
+            <img src="assets/img/gallery-1.jpg" class="img-fluid rounded-3" alt="Galeri 1">
+            <span class="gallery-badge"><i class="bi bi-search"></i></span>
+          </a>
+        </div>
+        <div class="col-6 col-lg-3">
+          <a class="gallery-item" href="assets/img/gallery-2.jpg" target="_blank" rel="noopener">
+            <img src="assets/img/gallery-2.jpg" class="img-fluid rounded-3" alt="Galeri 2">
+            <span class="gallery-badge"><i class="bi bi-search"></i></span>
+          </a>
+        </div>
+        <div class="col-6 col-lg-3">
+          <a class="gallery-item" href="assets/img/gallery-3.jpg" target="_blank" rel="noopener">
+            <img src="assets/img/gallery-3.jpg" class="img-fluid rounded-3" alt="Galeri 3">
+            <span class="gallery-badge"><i class="bi bi-search"></i></span>
+          </a>
+        </div>
+        <div class="col-6 col-lg-3">
+          <a class="gallery-item" href="assets/img/gallery-4.jpg" target="_blank" rel="noopener">
+            <img src="assets/img/gallery-4.jpg" class="img-fluid rounded-3" alt="Galeri 4">
+            <span class="gallery-badge"><i class="bi bi-search"></i></span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -377,9 +401,12 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
               <div class="icon-pill"><i class="bi bi-quote"></i></div>
               <div class="fw-semibold">Visi</div>
             </div>
-            <p class="lead mb-0"><?= h($site["vision"]) ?></p>
+            <p class="lead mb-0">
+              Mencetak generasi yang unggul dalam prestasi berdasarkan iman, taqwa, cerdas, tanggap, cakap, terampil, berakhlakul karimah.
+            </p>
           </div>
         </div>
+
         <div class="col-lg-5" id="sarana">
           <div class="card card-soft">
             <div class="card-body">
@@ -394,9 +421,7 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
             </div>
           </div>
         </div>
-      </div>
-      <div class="note small text-muted mt-3">
-        Referensi struktur section & info pendaftaran mengikuti tampilan halaman utama situs: gelombang pendaftaran dan menu utama. :contentReference[oaicite:1]{index=1}
+
       </div>
     </div>
   </section>
@@ -413,7 +438,9 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
             <div class="icon-pill"><i class="bi bi-geo-alt"></i></div>
             <div>
               <div class="fw-semibold">Alamat</div>
-              <div class="text-muted"><?= h($site["contact"]["address"]) ?></div>
+              <div class="text-muted">
+                Jl. Raya Mojosari – Mojokerto KM. 4 No 10, Mojolegi Modopuro, Mojosari, Mojokerto, Jawa Timur
+              </div>
             </div>
           </div>
 
@@ -421,7 +448,7 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
             <div class="icon-pill"><i class="bi bi-telephone"></i></div>
             <div>
               <div class="fw-semibold">Telepon</div>
-              <div class="text-muted"><?= h($site["contact"]["telp"]) ?></div>
+              <div class="text-muted">(0321) 592783</div>
             </div>
           </div>
 
@@ -429,32 +456,28 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
             <div class="icon-pill"><i class="bi bi-envelope"></i></div>
             <div>
               <div class="fw-semibold">Email</div>
-              <a href="mailto:<?= h($site["contact"]["email"]) ?>" class="link-primary"><?= h($site["contact"]["email"]) ?></a>
+              <a href="mailto:pesantrenuluwiyah@gmail.com" class="link-primary">pesantrenuluwiyah@gmail.com</a>
             </div>
           </div>
 
           <div class="d-flex flex-wrap gap-2 mt-4">
-            <a class="btn btn-success" href="<?= h($site["contact"]["wa1"]) ?>" target="_blank" rel="noopener">
+            <a class="btn btn-success" href="https://api.whatsapp.com/send?phone=6285857595913" target="_blank" rel="noopener">
               <i class="bi bi-whatsapp me-1"></i> WA Admin Putra
             </a>
-            <a class="btn btn-success" href="<?= h($site["contact"]["wa2"]) ?>" target="_blank" rel="noopener">
+            <a class="btn btn-success" href="https://api.whatsapp.com/send?phone=6281459094062" target="_blank" rel="noopener">
               <i class="bi bi-whatsapp me-1"></i> WA Admin Putri
             </a>
-          </div>
-
-          <div class="small text-muted mt-3">
-            Data kontak & alamat diambil dari informasi publik yang tampil di situs referensi. :contentReference[oaicite:2]{index=2}
           </div>
         </div>
 
         <div class="col-lg-6">
           <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
             <iframe
-              src="https://www.google.com/maps?q=<?= rawurlencode($site["contact"]["address"]) ?>&output=embed"
+              src="https://www.google.com/maps?q=Jl.%20Raya%20Mojosari%20%E2%80%93%20Mojokerto%20KM.%204%20No%2010,%20Mojolegi%20Modopuro,%20Mojosari,%20Mojokerto,%20Jawa%20Timur&output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
-          <div class="small text-muted mt-2">Peta embed berdasarkan alamat (bisa Anda ganti ke titik koordinat yang tepat).</div>
+          <div class="small text-muted mt-2">Peta embed berdasarkan alamat (bisa diganti koordinat yang tepat).</div>
         </div>
       </div>
     </div>
@@ -465,8 +488,8 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
     <div class="container py-5">
       <div class="row g-4">
         <div class="col-lg-4">
-          <div class="fw-bold mb-2"><?= h($site["name"]) ?></div>
-          <p class="text-muted mb-0"><?= h($site["tagline"]) ?></p>
+          <div class="fw-bold mb-2">Pondok Pesantren Uluwiyah</div>
+          <p class="text-muted mb-0">Situs resmi Yayasan Pondok Pesantren Pendidikan Uluwiyah</p>
         </div>
         <div class="col-6 col-lg-4">
           <div class="fw-semibold mb-2">Main Menu</div>
@@ -479,22 +502,24 @@ function h($s){ return htmlspecialchars($s ?? "", ENT_QUOTES, "UTF-8"); }
         </div>
         <div class="col-6 col-lg-4">
           <div class="fw-semibold mb-2">Kontak</div>
-          <div class="text-muted small"><?= h($site["contact"]["address"]) ?></div>
-          <div class="text-muted small mt-2"><?= h($site["contact"]["telp"]) ?></div>
-          <div class="text-muted small"><?= h($site["contact"]["email"]) ?></div>
+          <div class="text-muted small">Jl. Raya Mojosari – Mojokerto KM. 4 No 10, Mojolegi Modopuro, Mojosari, Mojokerto, Jawa Timur</div>
+          <div class="text-muted small mt-2">(0321) 592783</div>
+          <div class="text-muted small">pesantrenuluwiyah@gmail.com</div>
         </div>
       </div>
 
       <hr class="my-4">
       <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
-        <div class="small text-muted">© <?= date("Y") ?> <?= h($site["name"]) ?>. All rights reserved.</div>
+        <div class="small text-muted">© <span id="year"></span> Pondok Pesantren Uluwiyah. All rights reserved.</div>
         <a class="small link-muted" href="#home"><i class="bi bi-arrow-up"></i> Top</a>
       </div>
     </div>
   </footer>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
