@@ -11,12 +11,18 @@
   <meta property="og:description" content="Pendidikan • Pembinaan • Kegiatan Sosial" />
   <meta property="og:type" content="website" />
 
+  <!-- Performance -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://images.pexels.com" crossorigin>
+  <link rel="preconnect" href="https://unsplash.com" crossorigin>
+
   <!-- Bootstrap + Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- =========================
        FINAL THEME (HIJAU + OREN)
+       Responsive polish (mobile + desktop)
        ========================= -->
   <style>
     :root{
@@ -40,12 +46,29 @@
       --bs-link-hover-color: var(--green-dark);
     }
 
-    html{ scroll-behavior:smooth; }
-    body{ color:var(--ink); }
+    html{ scroll-behavior:smooth; scroll-padding-top: 84px; }
+    body{
+      color:var(--ink);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      background: #fff;
+    }
+    a:focus-visible, button:focus-visible{ outline: 3px solid rgba(255,138,0,.35); outline-offset: 2px; }
+    img{ max-width: 100%; height: auto; }
+
+    /* Skip link */
+    .skip-link{
+      position:absolute; left:-999px; top: 10px;
+      background:#fff; border:1px solid rgba(15,47,41,.18);
+      padding: 10px 12px; border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(15,47,41,.12);
+      z-index: 9999;
+    }
+    .skip-link:focus{ left: 12px; }
 
     /* Layout helpers */
     .container{ max-width: 1120px; }
-    .section{ padding: 76px 0; }
+    .section{ padding: clamp(52px, 6vw, 76px) 0; }
     .section-alt{
       background:
         radial-gradient(900px 320px at 15% 20%, rgba(255,138,0,.12), transparent 60%),
@@ -60,6 +83,9 @@
     }
     .link-muted{ color:#4d5b57; text-decoration:none; }
     .link-muted:hover{ color:var(--green); text-decoration:underline; }
+    @media (max-width: 576px){
+      .topbar{ display:none; }
+    }
 
     /* Navbar */
     .navbar{
@@ -67,12 +93,26 @@
       backdrop-filter: blur(8px);
     }
     .navbar .nav-link{
-      font-weight: 600;
+      font-weight: 700;
       color:#24423b;
+      padding: .6rem .85rem;
+      border-radius: 12px;
     }
     .navbar .nav-link:hover,
-    .navbar .nav-link:focus{ color:var(--green) !important; }
-    .navbar .nav-link.active{ color:var(--green) !important; }
+    .navbar .nav-link:focus{
+      color:var(--green) !important;
+      background: rgba(19,138,82,.06);
+    }
+    .navbar .nav-link.active{
+      color:var(--green) !important;
+      background: rgba(19,138,82,.08);
+    }
+    .navbar-toggler{
+      border: 1px solid rgba(15,47,41,.15);
+      border-radius: 14px;
+      padding: .45rem .6rem;
+    }
+    .navbar-toggler:focus{ box-shadow: 0 0 0 .2rem rgba(255,138,0,.20); }
     .dropdown-item:active{
       background: var(--green) !important;
       color:#fff !important;
@@ -88,7 +128,7 @@
       box-shadow: 0 12px 26px rgba(19,138,82,.22);
       flex: 0 0 auto;
     }
-    .brand-subtitle{ font-size:.82rem; color:var(--muted); font-weight:500; }
+    .brand-subtitle{ font-size:.82rem; color:var(--muted); font-weight:600; }
 
     /* Buttons (FORCE override) */
     .btn-primary{
@@ -104,7 +144,7 @@
     .btn-outline-accent{
       border-color: rgba(255,138,0,.75) !important;
       color: var(--orange-dark) !important;
-      font-weight: 700;
+      font-weight: 800;
     }
     .btn-outline-accent:hover{
       background: rgba(255,138,0,.10) !important;
@@ -114,7 +154,7 @@
       background: rgba(19,138,82,.10);
       border: 1px solid rgba(19,138,82,.22);
       color: var(--green-dark);
-      font-weight: 700;
+      font-weight: 800;
     }
     .btn-soft:hover{ background: rgba(19,138,82,.14); }
 
@@ -141,7 +181,7 @@
       align-items:center;
       gap:.55rem;
       margin-bottom:.45rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: .2px;
     }
     .dot{
@@ -170,12 +210,10 @@
       color: var(--orange-dark);
     }
 
-    /* Hero (carousel) */
-    .hero .carousel-item{
-      min-height: 590px;
-    }
+    /* Hero */
+    .hero .carousel-item{ min-height: clamp(480px, 64vh, 620px); }
     .hero-slide{
-      min-height: 590px;
+      min-height: clamp(480px, 64vh, 620px);
       background-size: cover;
       background-position: center;
       position: relative;
@@ -188,19 +226,38 @@
       background:
         radial-gradient(1100px 520px at 12% 30%, rgba(255,138,0,.26), transparent 60%),
         radial-gradient(900px 420px at 85% 85%, rgba(19,138,82,.18), transparent 55%),
-        linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.28));
+        linear-gradient(90deg, rgba(0,0,0,.74), rgba(0,0,0,.30));
       z-index: 0;
     }
-    .hero-content{ position:relative; z-index: 1; color:#fff; padding: 68px 0; }
+    .hero-content{
+      position:relative;
+      z-index: 1;
+      color:#fff;
+      padding: clamp(44px, 5vw, 68px) 0;
+      max-width: 860px;
+    }
     .hero-badge{
-      display:inline-flex; align-items:center; gap:.4rem;
-      padding: .5rem .75rem;
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding: .52rem .82rem;
       border-radius: 999px;
       background: rgba(255,255,255,.92);
       color:#0b2f23;
       border: 1px solid rgba(255,255,255,.25);
-      font-weight: 800;
-      font-size: .9rem;
+      font-weight: 900;
+      font-size: .92rem;
+    }
+    .hero h1, .hero h2{
+      letter-spacing: -.02em;
+    }
+    .hero .headline{
+      font-size: clamp(1.75rem, 3.2vw, 3.1rem);
+      line-height: 1.12;
+      font-weight: 900;
+    }
+    .hero .subhead{
+      font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+      color: rgba(255,255,255,.92);
+      max-width: 62ch;
     }
     .hero-note{
       font-size:.95rem;
@@ -209,7 +266,7 @@
     }
     .hero-stats{
       display:flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
       margin-top: 18px;
     }
@@ -223,8 +280,17 @@
       border: 1px solid rgba(255,255,255,.18);
       backdrop-filter: blur(6px);
     }
-    .stat-chip .n{ font-weight: 900; }
+    .stat-chip .n{ font-weight: 900; line-height: 1.05; }
     .stat-chip .t{ font-size:.86rem; color: rgba(255,255,255,.86); }
+    .hero .btn-lg{
+      padding: .85rem 1.05rem;
+      border-radius: 16px;
+      font-weight: 900;
+    }
+    @media (max-width: 576px){
+      .hero .btn-lg{ width: 100%; justify-content:center; }
+      .hero-stats{ gap: 10px; }
+    }
 
     /* Program strip */
     .program-strip{
@@ -245,7 +311,7 @@
     .strip-item i{ color: var(--green); font-size: 1.15rem; margin-top: 2px; }
 
     /* CTA */
-    .cta{ padding: 0 0 78px 0; }
+    .cta{ padding: 0 0 clamp(54px, 6vw, 78px) 0; }
     .cta-box{
       border-radius: 22px;
       background:
@@ -254,8 +320,11 @@
         #ffffff;
       border: 1px solid rgba(15,47,41,.10);
       box-shadow: 0 18px 50px rgba(15,47,41,.12);
-      padding: 28px;
+      padding: clamp(18px, 2.2vw, 28px);
       margin-top: -28px;
+    }
+    @media (max-width: 992px){
+      .cta-box{ margin-top: -18px; }
     }
 
     /* Gallery */
@@ -278,16 +347,18 @@
       box-shadow: 0 12px 30px rgba(15,47,41,.12);
     }
     .gitem.wide{ grid-column: span 6; }
+
     .gitem img{
       width:100%;
-      height: 210px;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       display:block;
       opacity:.94;
       transition: transform .22s ease, opacity .22s ease;
     }
-    .gitem.wide img{ height: 260px; }
+    .gitem.wide img{ aspect-ratio: 16 / 9; }
     .gitem:hover img{ transform: scale(1.035); opacity:1; }
+
     .gcap{
       position:absolute;
       left: 12px; bottom: 12px;
@@ -297,17 +368,18 @@
       justify-content:space-between;
       gap: 10px;
       color:#fff;
+      pointer-events:none;
     }
     .gcap .tag{
       display:inline-flex; align-items:center; gap:.35rem;
       padding: 8px 10px;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 900;
       font-size: .85rem;
       background: linear-gradient(135deg, rgba(19,138,82,.92), rgba(255,138,0,.92));
       box-shadow: 0 12px 26px rgba(0,0,0,.18);
     }
-    .gcap .hint{ font-size: .86rem; color: rgba(255,255,255,.85); }
+    .gcap .hint{ font-size: .86rem; color: rgba(255,255,255,.88); }
 
     /* Contact */
     .contact-list .rowx{
@@ -316,6 +388,10 @@
       border-bottom: 1px solid rgba(15,47,41,.10);
     }
     .contact-list .rowx:last-child{ border-bottom:none; }
+    @media (max-width: 576px){
+      .contact-list .rowx{ gap: 10px; }
+      .contact-list .icon-pill{ width: 40px; height: 40px; }
+    }
     .map-shell{
       border-radius: 22px;
       overflow:hidden;
@@ -351,7 +427,7 @@
       background: rgba(255,138,0,.08);
       border: 1px solid rgba(255,138,0,.18);
       color:#2e5148;
-      font-weight: 700;
+      font-weight: 800;
       font-size: .93rem;
     }
 
@@ -372,17 +448,19 @@
       padding: 12px 14px;
       color: rgba(255,255,255,.90);
       border-top: 1px solid rgba(255,255,255,.10);
-      font-weight: 700;
+      font-weight: 800;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
     }
-    .lb-caption small{ font-weight: 600; color: rgba(255,255,255,.70); }
+    .lb-caption small{ font-weight: 700; color: rgba(255,255,255,.70); }
   </style>
 </head>
 
-<body id="home">
+<body>
+
+  <a class="skip-link" href="#main">Lewati ke konten</a>
 
   <!-- TOPBAR -->
   <div class="topbar">
@@ -402,7 +480,7 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#home" aria-label="Beranda">
         <div class="brand-mark" aria-hidden="true"><i class="bi bi-mosque"></i></div>
         <div class="lh-sm">
           <div class="fw-bold">Yayasan Nurul Hikmah</div>
@@ -410,7 +488,7 @@
         </div>
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-label="Buka menu">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -431,507 +509,520 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5200">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  <main id="main">
+
+    <!-- HERO -->
+    <header class="hero" id="home">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5200" aria-label="Sorotan utama">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="hero-slide"
+              style="background-image:url('https://unsplash.com/photos/PbKQCYxKZug/download?force=true&w=2400');">
+              <div class="hero-overlay"></div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="hero-content">
+                      <div class="hero-badge mb-3">
+                        <i class="bi bi-stars" style="color:var(--orange-dark)"></i>
+                        Selamat datang
+                      </div>
+                      <h1 class="headline mb-2">Yayasan Nurul Hikmah Tugu Liyep</h1>
+                      <p class="subhead mb-4">
+                        Pendidikan, pembinaan akhlak, dan kegiatan sosial — membangun generasi yang beriman,
+                        berilmu, dan bermanfaat.
+                      </p>
+
+                      <div class="d-flex flex-wrap gap-2">
+                        <a class="btn btn-primary btn-lg d-inline-flex align-items-center" href="#pendaftaran">
+                          <i class="bi bi-megaphone me-2"></i> Info Pendaftaran
+                        </a>
+                        <a class="btn btn-outline-light btn-lg d-inline-flex align-items-center" href="#profil">
+                          <i class="bi bi-info-circle me-2"></i> Profil Singkat
+                        </a>
+                      </div>
+
+                      <div class="hero-stats">
+                        <div class="stat-chip">
+                          <div class="icon-pill accent" style="width:40px;height:40px"><i class="bi bi-book"></i></div>
+                          <div><div class="n">Pembinaan</div><div class="t">adab & ibadah</div></div>
+                        </div>
+                        <div class="stat-chip">
+                          <div class="icon-pill" style="width:40px;height:40px"><i class="bi bi-mortarboard"></i></div>
+                          <div><div class="n">Pendidikan</div><div class="t">belajar terarah</div></div>
+                        </div>
+                        <div class="stat-chip">
+                          <div class="icon-pill accent" style="width:40px;height:40px"><i class="bi bi-heart"></i></div>
+                          <div><div class="n">Sosial</div><div class="t">peduli masyarakat</div></div>
+                        </div>
+                      </div>
+
+                      <div class="hero-note">
+                        <i class="bi bi-geo-alt me-1"></i>
+                        Tugu Liyep, Indonesia
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="hero-slide"
+              style="background-image:url('https://images.pexels.com/photos/35865718/pexels-photo-35865718.jpeg?auto=compress&cs=tinysrgb&w=2400');">
+              <div class="hero-overlay"></div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="hero-content">
+                      <div class="hero-badge mb-3">
+                        <i class="bi bi-mortarboard" style="color:var(--orange-dark)"></i>
+                        Pendidikan & karakter
+                      </div>
+                      <h2 class="headline mb-2">Belajar yang tertib, disiplin, dan berprestasi</h2>
+                      <p class="subhead mb-4">
+                        Pembelajaran terstruktur, pembiasaan adab, dan dukungan kegiatan untuk menguatkan
+                        potensi peserta didik.
+                      </p>
+                      <div class="d-flex flex-wrap gap-2">
+                        <a class="btn btn-primary btn-lg d-inline-flex align-items-center" href="#program">
+                          <i class="bi bi-grid-3x3-gap me-2"></i> Lihat Program
+                        </a>
+                        <a class="btn btn-outline-light btn-lg d-inline-flex align-items-center" href="#kontak">
+                          <i class="bi bi-telephone me-2"></i> Hubungi Admin
+                        </a>
+                      </div>
+                      <div class="hero-note"><i class="bi bi-shield-check me-1"></i> Pembinaan terarah dan lingkungan yang mendukung</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <div class="hero-slide"
+              style="background-image:url('https://images.pexels.com/photos/34481780/pexels-photo-34481780.jpeg?auto=compress&cs=tinysrgb&w=2400');">
+              <div class="hero-overlay"></div>
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="hero-content">
+                      <div class="hero-badge mb-3">
+                        <i class="bi bi-book" style="color:var(--orange-dark)"></i>
+                        Tahsin & pembinaan
+                      </div>
+                      <h2 class="headline mb-2">Pembiasaan yang membentuk kebiasaan baik</h2>
+                      <p class="subhead mb-4">
+                        Kegiatan pembinaan untuk membangun akhlak, kemandirian, serta kepedulian sosial.
+                      </p>
+                      <div class="d-flex flex-wrap gap-2">
+                        <a class="btn btn-primary btn-lg d-inline-flex align-items-center" href="#pendaftaran">
+                          <i class="bi bi-calendar2-check me-2"></i> Jadwal Pendaftaran
+                        </a>
+                        <a class="btn btn-outline-light btn-lg d-inline-flex align-items-center" href="#galeri">
+                          <i class="bi bi-images me-2"></i> Lihat Galeri
+                        </a>
+                      </div>
+                      <div class="hero-note"><i class="bi bi-check2-circle me-1"></i> Program terstruktur dan mudah dipahami</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Sebelumnya">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Berikutnya">
+          <span class="carousel-control-next-icon"></span>
+        </button>
       </div>
+    </header>
 
-      <div class="carousel-inner">
+    <!-- PROFIL -->
+    <section class="section" id="profil">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-5">
+            <div class="card-soft h-100 p-4 p-lg-5">
+              <div class="kicker"><span class="dot"></span> Tentang Yayasan</div>
+              <h2 class="h4 fw-bold mb-3">Profil Singkat</h2>
+              <p class="text-muted mb-4">
+                Yayasan Nurul Hikmah Tugu Liyep berfokus pada pendidikan dan pembinaan karakter,
+                disertai kegiatan sosial untuk mendukung masyarakat sekitar.
+              </p>
 
-        <!-- Slide 1 (Masjid - Unsplash) -->
-        <div class="carousel-item active">
-          <div class="hero-slide"
-            style="background-image:url('https://unsplash.com/photos/PbKQCYxKZug/download?force=true&w=2400');">
-            <div class="hero-overlay"></div>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="hero-content">
-                    <div class="hero-badge mb-3">
-                      <i class="bi bi-stars" style="color:var(--orange-dark)"></i>
-                      Selamat datang
-                    </div>
-                    <h1 class="display-5 fw-bold mb-2">Yayasan Nurul Hikmah Tugu Liyep</h1>
-                    <p class="lead mb-4">
-                      Pendidikan, pembinaan akhlak, dan kegiatan sosial — membangun generasi yang beriman,
-                      berilmu, dan bermanfaat.
-                    </p>
+              <div class="mini-note mb-4">
+                <i class="bi bi-palette2 me-1"></i> Identitas visual: hijau (utama) & oren (aksen).
+              </div>
 
-                    <div class="d-flex flex-wrap gap-2">
-                      <a class="btn btn-primary btn-lg" href="#pendaftaran">
-                        <i class="bi bi-megaphone me-1"></i> Info Pendaftaran
-                      </a>
-                      <a class="btn btn-outline-light btn-lg" href="#profil">
-                        <i class="bi bi-info-circle me-1"></i> Profil Singkat
-                      </a>
-                    </div>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="#visi" class="btn btn-soft"><i class="bi bi-quote me-1"></i> Visi & Misi</a>
+                <a href="#kontak" class="btn btn-outline-accent"><i class="bi bi-geo-alt me-1"></i> Lokasi</a>
+              </div>
+            </div>
+          </div>
 
-                    <div class="hero-stats">
-                      <div class="stat-chip">
-                        <div class="icon-pill accent" style="width:40px;height:40px"><i class="bi bi-book"></i></div>
-                        <div><div class="n">Pembinaan</div><div class="t">adab & ibadah</div></div>
-                      </div>
-                      <div class="stat-chip">
-                        <div class="icon-pill" style="width:40px;height:40px"><i class="bi bi-mortarboard"></i></div>
-                        <div><div class="n">Pendidikan</div><div class="t">belajar terarah</div></div>
-                      </div>
-                      <div class="stat-chip">
-                        <div class="icon-pill accent" style="width:40px;height:40px"><i class="bi bi-heart"></i></div>
-                        <div><div class="n">Sosial</div><div class="t">peduli masyarakat</div></div>
-                      </div>
-                    </div>
-
-                    <div class="hero-note">
-                      <i class="bi bi-geo-alt me-1"></i>
-                      Tugu Liyep — (silakan sesuaikan alamat lengkap di bagian Kontak)
-                    </div>
+          <div class="col-lg-7">
+            <div class="row g-4">
+              <div class="col-md-6" id="pendaftaran">
+                <div class="card-soft card-hover h-100 p-4">
+                  <div class="icon-pill"><i class="bi bi-calendar2-check"></i></div>
+                  <h3 class="h5 fw-bold mt-3">Informasi Pendaftaran</h3>
+                  <p class="text-muted mb-3">
+                    Periode pendaftaran dibuka dalam beberapa gelombang.
+                  </p>
+                  <ul class="small text-muted ps-3 mb-3">
+                    <li>Gelombang 1: 1 Jan – 31 Mar</li>
+                    <li>Gelombang 2: 1 Apr – 31 Mei</li>
+                    <li>Gelombang 3: 1 Jun – 14 Jul</li>
+                  </ul>
+                  <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-primary btn-sm" href="#kontak"><i class="bi bi-whatsapp me-1"></i> Tanya Admin</a>
+                    <a class="btn btn-outline-accent btn-sm" href="#program"><i class="bi bi-grid-3x3-gap me-1"></i> Lihat Program</a>
                   </div>
                 </div>
               </div>
-            </div>
 
+              <div class="col-md-6">
+                <div class="card-soft card-hover h-100 p-4">
+                  <div class="icon-pill accent"><i class="bi bi-heart-pulse"></i></div>
+                  <h3 class="h5 fw-bold mt-3">Kegiatan Sosial</h3>
+                  <p class="text-muted mb-3">
+                    Program sosial untuk mendukung kesejahteraan dan kepedulian masyarakat sekitar.
+                  </p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="badge rounded-pill" style="background:rgba(19,138,82,.08);border:1px solid rgba(19,138,82,.18);color:var(--green-dark);padding:.5rem .75rem;font-weight:900;">Santunan</span>
+                    <span class="badge rounded-pill" style="background:rgba(255,138,0,.10);border:1px solid rgba(255,138,0,.22);color:var(--orange-dark);padding:.5rem .75rem;font-weight:900;">Bakti Sosial</span>
+                    <span class="badge rounded-pill" style="background:rgba(19,138,82,.08);border:1px solid rgba(19,138,82,.18);color:var(--green-dark);padding:.5rem .75rem;font-weight:900;">Beasiswa</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12" id="program">
+                <div class="card-soft p-4 p-lg-5">
+                  <div class="d-flex flex-wrap align-items-end justify-content-between gap-2">
+                    <div>
+                      <div class="kicker"><span class="dot accent"></span> Program</div>
+                      <h3 class="h4 fw-bold mb-1">Program Pendidikan & Pembinaan</h3>
+                      <p class="text-muted mb-0">Rangkaian program untuk membangun karakter, ilmu, dan keterampilan.</p>
+                    </div>
+                    <a class="btn btn-outline-accent" href="#kontak"><i class="bi bi-telephone me-1"></i> Konsultasi</a>
+                  </div>
+
+                  <hr class="my-4" style="border-color:rgba(15,47,41,.12)">
+
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="p-3 rounded-4" style="background:#f8faf9;border:1px solid rgba(15,47,41,.10);">
+                        <div class="fw-bold mb-2">Pendidikan</div>
+                        <ul class="text-muted mb-0">
+                          <li>Kelas dasar (literasi & numerasi)</li>
+                          <li>Penguatan karakter & disiplin</li>
+                          <li>Kegiatan ekstrakurikuler</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="p-3 rounded-4" style="background:#f8faf9;border:1px solid rgba(15,47,41,.10);">
+                        <div class="fw-bold mb-2">Keagamaan</div>
+                        <ul class="text-muted mb-0">
+                          <li>Tahsin & pembiasaan mengaji</li>
+                          <li>Adab harian & pembinaan ibadah</li>
+                          <li>Kajian rutin</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="program-strip mt-2">
+                        <div class="strip-item">
+                          <i class="bi bi-check2-circle"></i>
+                          <div>
+                            <div class="fw-bold">Kurikulum seimbang</div>
+                            <div class="small text-muted">Nilai + keterampilan</div>
+                          </div>
+                        </div>
+                        <div class="strip-item">
+                          <i class="bi bi-check2-circle"></i>
+                          <div>
+                            <div class="fw-bold">Pembinaan karakter</div>
+                            <div class="small text-muted">Disiplin + mandiri</div>
+                          </div>
+                        </div>
+                        <div class="strip-item">
+                          <i class="bi bi-check2-circle"></i>
+                          <div>
+                            <div class="fw-bold">Kegiatan sosial</div>
+                            <div class="small text-muted">Peduli masyarakat</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div><!-- row -->
+                </div><!-- card -->
+              </div><!-- col -->
+
+            </div><!-- row -->
+          </div><!-- col -->
+        </div><!-- row -->
+      </div><!-- container -->
+    </section>
+
+    <!-- VISI MISI -->
+    <section class="section section-alt" id="visi">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7">
+            <div class="card-soft p-4 p-lg-5">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <div class="icon-pill"><i class="bi bi-quote"></i></div>
+                <div class="fw-bold">Visi</div>
+              </div>
+              <p class="lead mb-0">
+                Mencetak generasi beriman, berakhlak, cerdas, dan bermanfaat bagi masyarakat.
+              </p>
+              <hr class="my-4" style="border-color:rgba(15,47,41,.12)">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <div class="icon-pill accent"><i class="bi bi-bullseye"></i></div>
+                <div class="fw-bold">Misi</div>
+              </div>
+              <ul class="text-muted mb-0">
+                <li>Menyelenggarakan pendidikan dan pembinaan yang berkualitas.</li>
+                <li>Menanamkan adab, disiplin, dan kepedulian sosial.</li>
+                <li>Mendorong prestasi akademik & non-akademik.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="card-soft p-4 p-lg-5">
+              <div class="kicker"><span class="dot"></span> Sarana</div>
+              <h3 class="h5 fw-bold mb-2">Sarana & Prasarana</h3>
+              <p class="text-muted mb-3">Fasilitas pendukung kegiatan belajar dan pembinaan:</p>
+              <ul class="text-muted mb-0">
+                <li>Ruang belajar & kegiatan</li>
+                <li>Ruang ibadah / kajian</li>
+                <li>Perpustakaan / sudut baca</li>
+                <li>Area pembinaan & keterampilan</li>
+              </ul>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Slide 2 (Kelas - Pexels) -->
-        <div class="carousel-item">
-          <div class="hero-slide"
-            style="background-image:url('https://images.pexels.com/photos/35865718/pexels-photo-35865718.jpeg?auto=compress&cs=tinysrgb&w=2400');">
-            <div class="hero-overlay"></div>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="hero-content">
-                    <div class="hero-badge mb-3">
-                      <i class="bi bi-mortarboard" style="color:var(--orange-dark)"></i>
-                      Pendidikan & karakter
-                    </div>
-                    <h2 class="display-6 fw-bold mb-2">Belajar yang tertib, disiplin, dan berprestasi</h2>
-                    <p class="lead mb-4">
-                      Pembelajaran terstruktur, pembiasaan adab, dan dukungan kegiatan untuk menguatkan
-                      potensi anak didik.
-                    </p>
-                    <div class="d-flex flex-wrap gap-2">
-                      <a class="btn btn-primary btn-lg" href="#program"><i class="bi bi-grid-3x3-gap me-1"></i> Lihat Program</a>
-                      <a class="btn btn-outline-light btn-lg" href="#kontak"><i class="bi bi-telephone me-1"></i> Hubungi Admin</a>
-                    </div>
-                    <div class="hero-note"><i class="bi bi-shield-check me-1"></i> Landing page siap deploy (tanpa DB)</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+    <!-- KEGIATAN -->
+    <section class="section" id="berita">
+      <div class="container">
+        <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-4">
+          <div>
+            <div class="kicker"><span class="dot accent"></span> Update</div>
+            <h2 class="h3 fw-bold mb-1">Kegiatan & Informasi</h2>
+            <p class="text-muted mb-0">Informasi kegiatan terbaru seputar program yayasan.</p>
           </div>
+          <a class="btn btn-outline-accent" href="#kontak"><i class="bi bi-send me-1"></i> Sampaikan Informasi</a>
         </div>
 
-        <!-- Slide 3 (Mengaji - Pexels) -->
-        <div class="carousel-item">
-          <div class="hero-slide"
-            style="background-image:url('https://images.pexels.com/photos/34481780/pexels-photo-34481780.jpeg?auto=compress&cs=tinysrgb&w=2400');">
-            <div class="hero-overlay"></div>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="hero-content">
-                    <div class="hero-badge mb-3">
-                      <i class="bi bi-book" style="color:var(--orange-dark)"></i>
-                      Tahsin & pembinaan
-                    </div>
-                    <h2 class="display-6 fw-bold mb-2">Pembiasaan yang membentuk kebiasaan baik</h2>
-                    <p class="lead mb-4">
-                      Kegiatan pembinaan harian untuk membangun akhlak, kemandirian, dan kepedulian sosial.
-                    </p>
-                    <div class="d-flex flex-wrap gap-2">
-                      <a class="btn btn-primary btn-lg" href="#pendaftaran"><i class="bi bi-calendar2-check me-1"></i> Jadwal Pendaftaran</a>
-                      <a class="btn btn-outline-light btn-lg" href="#galeri"><i class="bi bi-images me-1"></i> Lihat Galeri</a>
-                    </div>
-                    <div class="hero-note"><i class="bi bi-check2-circle me-1"></i> Tema hijau–oren konsisten di seluruh komponen</div>
-                  </div>
-                </div>
-              </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="card-soft card-hover h-100 p-4">
+              <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i> 22 Jan 2026</div>
+              <h3 class="h6 fw-bold">Kajian Rutin Pekanan</h3>
+              <p class="text-muted small mb-0">Kajian dan pembinaan rutin untuk meningkatkan pemahaman dan akhlak.</p>
             </div>
+          </div>
 
+          <div class="col-md-6 col-lg-3">
+            <div class="card-soft card-hover h-100 p-4">
+              <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i> 4 Jun 2025</div>
+              <h3 class="h6 fw-bold">Program Beasiswa</h3>
+              <p class="text-muted small mb-0">Dukungan pendidikan bagi peserta didik sesuai ketentuan program.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card-soft card-hover h-100 p-4">
+              <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i> 22 Des 2024</div>
+              <h3 class="h6 fw-bold">Bakti Sosial</h3>
+              <p class="text-muted small mb-0">Kegiatan sosial untuk membantu masyarakat sekitar.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="card-soft card-hover h-100 p-4">
+              <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i> 13 Des 2024</div>
+              <h3 class="h6 fw-bold">Pembinaan Harian</h3>
+              <p class="text-muted small mb-0">Pembiasaan ibadah, adab, dan kedisiplinan dalam kegiatan harian.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div class="row g-3 align-items-center">
+            <div class="col-lg-8">
+              <h2 class="h3 fw-bold mb-1">Siap bergabung?</h2>
+              <p class="mb-0 text-muted">Hubungi admin untuk informasi pendaftaran dan program.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+              <a class="btn btn-primary btn-lg d-inline-flex align-items-center" href="#kontak">
+                <i class="bi bi-whatsapp me-2"></i> Hubungi Admin
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERI -->
+    <section class="section section-alt" id="galeri">
+      <div class="container">
+        <div class="mb-4">
+          <div class="kicker"><span class="dot"></span> Dokumentasi</div>
+          <h2 class="h3 fw-bold mb-1">Galeri</h2>
+          <p class="text-muted mb-0">Klik gambar untuk melihat lebih besar.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gitem wide" data-src="https://unsplash.com/photos/PbKQCYxKZug/download?force=true&w=2400" data-title="Kegiatan & lingkungan masjid">
+            <img alt="Kegiatan di lingkungan masjid" src="https://unsplash.com/photos/PbKQCYxKZug/download?force=true&w=1600" loading="lazy">
+            <div class="gcap">
+              <div class="tag"><i class="bi bi-search"></i> Lihat</div>
+              <div class="hint">Masjid / lingkungan</div>
+            </div>
+          </div>
+
+          <div class="gitem" data-src="https://images.pexels.com/photos/35865718/pexels-photo-35865718.jpeg?auto=compress&cs=tinysrgb&w=2400" data-title="Suasana belajar di kelas">
+            <img alt="Suasana belajar di kelas" src="https://images.pexels.com/photos/35865718/pexels-photo-35865718.jpeg?auto=compress&cs=tinysrgb&w=1200" loading="lazy">
+            <div class="gcap">
+              <div class="tag"><i class="bi bi-search"></i> Lihat</div>
+              <div class="hint">Belajar</div>
+            </div>
+          </div>
+
+          <div class="gitem" data-src="https://images.pexels.com/photos/34481780/pexels-photo-34481780.jpeg?auto=compress&cs=tinysrgb&w=2400" data-title="Pembinaan mengaji">
+            <img alt="Pembinaan mengaji" src="https://images.pexels.com/photos/34481780/pexels-photo-34481780.jpeg?auto=compress&cs=tinysrgb&w=1200" loading="lazy">
+            <div class="gcap">
+              <div class="tag"><i class="bi bi-search"></i> Lihat</div>
+              <div class="hint">Mengaji</div>
+            </div>
+          </div>
+
+          <div class="gitem" data-src="https://images.pexels.com/photos/6281986/pexels-photo-6281986.jpeg?auto=compress&cs=tinysrgb&w=2400" data-title="Belajar mandiri & fokus">
+            <img alt="Belajar mandiri dan fokus" src="https://images.pexels.com/photos/6281986/pexels-photo-6281986.jpeg?auto=compress&cs=tinysrgb&w=1200" loading="lazy">
+            <div class="gcap">
+              <div class="tag"><i class="bi bi-search"></i> Lihat</div>
+              <div class="hint">Pembelajaran</div>
+            </div>
+          </div>
+
+          <div class="gitem wide" data-src="https://unsplash.com/photos/497y0gwmOnk/download?force=true&w=2400" data-title="Arsitektur masjid">
+            <img alt="Arsitektur masjid" src="https://unsplash.com/photos/497y0gwmOnk/download?force=true&w=1600" loading="lazy">
+            <div class="gcap">
+              <div class="tag"><i class="bi bi-search"></i> Lihat</div>
+              <div class="hint">Arsitektur</div>
+            </div>
           </div>
         </div>
 
       </div>
+    </section>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- PROFIL -->
-  <section class="section" id="profil">
-    <div class="container">
-      <div class="row g-4 align-items-stretch">
-        <div class="col-lg-5">
-          <div class="card-soft h-100 p-4 p-lg-5">
-            <div class="kicker"><span class="dot"></span> Tentang Yayasan</div>
-            <h2 class="h4 fw-bold mb-3">Profil Singkat</h2>
+    <!-- KONTAK -->
+    <section class="section" id="kontak">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="kicker"><span class="dot accent"></span> Hubungi</div>
+            <h2 class="h3 fw-bold mb-2">Kontak & Alamat</h2>
             <p class="text-muted mb-4">
-              Yayasan Nurul Hikmah Tugu Liyep berfokus pada pendidikan dan pembinaan karakter, disertai
-              kegiatan sosial untuk mendukung masyarakat sekitar. Halaman ini sengaja dibuat statis,
-              supaya cepat dipakai untuk presentasi ke customer & deploy GitHub Pages.
+              Silakan hubungi kami untuk informasi pendaftaran dan kegiatan yayasan.
             </p>
 
-            <div class="mini-note mb-4">
-              <i class="bi bi-palette2 me-1"></i> Brand color: hijau (utama) + oren (aksen) + gradient.
-            </div>
-
-            <div class="d-flex flex-wrap gap-2">
-              <a href="#visi" class="btn btn-soft"><i class="bi bi-quote me-1"></i> Visi & Misi</a>
-              <a href="#kontak" class="btn btn-outline-accent"><i class="bi bi-geo-alt me-1"></i> Lokasi</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-7">
-          <div class="row g-4">
-            <div class="col-md-6" id="pendaftaran">
-              <div class="card-soft card-hover h-100 p-4">
-                <div class="icon-pill"><i class="bi bi-calendar2-check"></i></div>
-                <h3 class="h5 fw-bold mt-3">Informasi Pendaftaran</h3>
-                <p class="text-muted mb-3">
-                  Ganti jadwal berikut sesuai periode penerimaan. Tombol di bawah bisa diarahkan ke Google Form / WA admin.
-                </p>
-                <ul class="small text-muted ps-3 mb-3">
-                  <li>Gelombang 1: 1 Jan – 31 Mar</li>
-                  <li>Gelombang 2: 1 Apr – 31 Mei</li>
-                  <li>Gelombang 3: 1 Jun – 14 Jul</li>
-                </ul>
-                <div class="d-flex flex-wrap gap-2">
-                  <a class="btn btn-primary btn-sm" href="#kontak"><i class="bi bi-whatsapp me-1"></i> Tanya Admin</a>
-                  <a class="btn btn-outline-accent btn-sm" href="#program"><i class="bi bi-grid-3x3-gap me-1"></i> Lihat Program</a>
+            <div class="card-soft p-4 contact-list">
+              <div class="rowx">
+                <div class="icon-pill"><i class="bi bi-geo-alt"></i></div>
+                <div>
+                  <div class="fw-bold">Alamat</div>
+                  <div class="text-muted">Tugu Liyep, (desa/kecamatan/kabupaten), Indonesia</div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-md-6">
-              <div class="card-soft card-hover h-100 p-4">
-                <div class="icon-pill accent"><i class="bi bi-heart-pulse"></i></div>
-                <h3 class="h5 fw-bold mt-3">Kegiatan Sosial</h3>
-                <p class="text-muted mb-3">
-                  Contoh kegiatan: santunan, bakti sosial, dan program donasi. Tinggal edit jadi data beneran yayasanmu.
-                </p>
-                <div class="d-flex flex-wrap gap-2">
-                  <span class="badge rounded-pill" style="background:rgba(19,138,82,.08);border:1px solid rgba(19,138,82,.18);color:var(--green-dark);padding:.5rem .75rem;font-weight:800;">Santunan</span>
-                  <span class="badge rounded-pill" style="background:rgba(255,138,0,.10);border:1px solid rgba(255,138,0,.22);color:var(--orange-dark);padding:.5rem .75rem;font-weight:800;">Bakti Sosial</span>
-                  <span class="badge rounded-pill" style="background:rgba(19,138,82,.08);border:1px solid rgba(19,138,82,.18);color:var(--green-dark);padding:.5rem .75rem;font-weight:800;">Beasiswa</span>
+              <div class="rowx">
+                <div class="icon-pill accent"><i class="bi bi-whatsapp"></i></div>
+                <div>
+                  <div class="fw-bold">WhatsApp Admin</div>
+                  <div class="text-muted">+62 8xx-xxxx-xxxx</div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-12" id="program">
-              <div class="card-soft p-4 p-lg-5">
-                <div class="d-flex flex-wrap align-items-end justify-content-between gap-2">
-                  <div>
-                    <div class="kicker"><span class="dot accent"></span> Program</div>
-                    <h3 class="h4 fw-bold mb-1">Program Pendidikan & Pembinaan</h3>
-                    <p class="text-muted mb-0">Struktur rapi untuk presentasi — tinggal ganti kontennya sesuai yayasan.</p>
-                  </div>
-                  <a class="btn btn-outline-accent" href="#kontak"><i class="bi bi-telephone me-1"></i> Konsultasi</a>
+              <div class="rowx">
+                <div class="icon-pill"><i class="bi bi-envelope"></i></div>
+                <div>
+                  <div class="fw-bold">Email</div>
+                  <a class="text-decoration-none" href="mailto:admin@nuruhikmah.id">admin@nuruhikmah.id</a>
                 </div>
+              </div>
 
-                <hr class="my-4" style="border-color:rgba(15,47,41,.12)">
-
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <div class="p-3 rounded-4" style="background:#f8faf9;border:1px solid rgba(15,47,41,.10);">
-                      <div class="fw-bold mb-2">Pendidikan</div>
-                      <ul class="text-muted mb-0">
-                        <li>Kelas dasar (literasi & numerasi)</li>
-                        <li>Penguatan karakter & disiplin</li>
-                        <li>Kegiatan ekstrakurikuler (opsional)</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <div class="p-3 rounded-4" style="background:#f8faf9;border:1px solid rgba(15,47,41,.10);">
-                      <div class="fw-bold mb-2">Keagamaan</div>
-                      <ul class="text-muted mb-0">
-                        <li>Tahsin & pembiasaan mengaji</li>
-                        <li>Adab harian & pembinaan ibadah</li>
-                        <li>Kajian rutin (opsional)</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="col-12">
-                    <div class="program-strip mt-2">
-                      <div class="strip-item">
-                        <i class="bi bi-check2-circle"></i>
-                        <div>
-                          <div class="fw-bold">Kurikulum seimbang</div>
-                          <div class="small text-muted">Nilai + keterampilan</div>
-                        </div>
-                      </div>
-                      <div class="strip-item">
-                        <i class="bi bi-check2-circle"></i>
-                        <div>
-                          <div class="fw-bold">Pembinaan karakter</div>
-                          <div class="small text-muted">Disiplin + mandiri</div>
-                        </div>
-                      </div>
-                      <div class="strip-item">
-                        <i class="bi bi-check2-circle"></i>
-                        <div>
-                          <div class="fw-bold">Kegiatan sosial</div>
-                          <div class="small text-muted">Peduli masyarakat</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div><!-- row -->
-              </div><!-- card -->
-            </div><!-- col -->
-
-          </div><!-- row -->
-        </div><!-- col -->
-      </div><!-- row -->
-    </div><!-- container -->
-  </section>
-
-  <!-- VISI MISI -->
-  <section class="section section-alt" id="visi">
-    <div class="container">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-7">
-          <div class="card-soft p-4 p-lg-5">
-            <div class="d-flex align-items-center gap-2 mb-3">
-              <div class="icon-pill"><i class="bi bi-quote"></i></div>
-              <div class="fw-bold">Visi</div>
-            </div>
-            <p class="lead mb-0">
-              Mencetak generasi beriman, berakhlak, cerdas, dan bermanfaat bagi masyarakat.
-            </p>
-            <hr class="my-4" style="border-color:rgba(15,47,41,.12)">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <div class="icon-pill accent"><i class="bi bi-bullseye"></i></div>
-              <div class="fw-bold">Misi</div>
-            </div>
-            <ul class="text-muted mb-0">
-              <li>Menyelenggarakan pendidikan dan pembinaan yang berkualitas.</li>
-              <li>Menanamkan adab, disiplin, dan kepedulian sosial.</li>
-              <li>Mendorong prestasi akademik & non-akademik.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-lg-5">
-          <div class="card-soft p-4 p-lg-5">
-            <div class="kicker"><span class="dot"></span> Sarana</div>
-            <h3 class="h5 fw-bold mb-2">Sarana & Prasarana</h3>
-            <p class="text-muted mb-3">Isi sesuai kondisi yayasanmu:</p>
-            <ul class="text-muted mb-0">
-              <li>Ruang belajar & kegiatan</li>
-              <li>Ruang ibadah / kajian</li>
-              <li>Perpustakaan / sudut baca</li>
-              <li>Area pembinaan & keterampilan</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KEGIATAN / BERITA -->
-  <section class="section" id="berita">
-    <div class="container">
-      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-4">
-        <div>
-          <div class="kicker"><span class="dot accent"></span> Update</div>
-          <h2 class="h3 fw-bold mb-1">Kegiatan & Informasi</h2>
-          <p class="text-muted mb-0">Template kartu kegiatan (statis). Nanti bisa dihubungkan ke CMS/DB.</p>
-        </div>
-        <a class="btn btn-outline-accent" href="#kontak"><i class="bi bi-send me-1"></i> Kirim Informasi</a>
-      </div>
-
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
-          <div class="card-soft card-hover h-100 p-4">
-            <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i> Contoh: 22 Jan 2026</div>
-            <h3 class="h6 fw-bold">Kajian Rutin Pekanan</h3>
-            <p class="text-muted small mb-0">Ringkasan kegiatan kajian/pembinaan.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="card-soft card-hover h-100 p-4">
-            <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i> Contoh: 4 Jun 2025</div>
-            <h3 class="h6 fw-bold">Program Beasiswa</h3>
-            <p class="text-muted small mb-0">Informasi bantuan pendidikan untuk peserta didik.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="card-soft card-hover h-100 p-4">
-            <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i> Contoh: 22 Des 2024</div>
-            <h3 class="h6 fw-bold">Bakti Sosial</h3>
-            <p class="text-muted small mb-0">Kegiatan sosial untuk masyarakat sekitar.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="card-soft card-hover h-100 p-4">
-            <div class="small text-muted mb-2"><i class="bi bi-clock me-1"></i> Contoh: 13 Des 2024</div>
-            <h3 class="h6 fw-bold">Kegiatan Pembinaan</h3>
-            <p class="text-muted small mb-0">Dokumentasi agenda pembinaan harian.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <div class="cta-box">
-        <div class="row g-3 align-items-center">
-          <div class="col-lg-8">
-            <h2 class="h3 fw-bold mb-1">Siap bergabung?</h2>
-            <p class="mb-0 text-muted">Klik untuk tanya admin via WhatsApp atau minta info pendaftaran lengkap.</p>
-          </div>
-          <div class="col-lg-4 text-lg-end">
-            <a class="btn btn-primary btn-lg" href="#kontak"><i class="bi bi-whatsapp me-1"></i> Hubungi Admin</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERI -->
-  <section class="section section-alt" id="galeri">
-    <div class="container">
-      <div class="mb-4">
-        <div class="kicker"><span class="dot"></span> Dokumentasi</div>
-        <h2 class="h3 fw-bold mb-1">Galeri</h2>
-        <p class="text-muted mb-0">Klik gambar untuk melihat lebih besar (lightbox).</p>
-      </div>
-
-      <div class="gallery-grid">
-        <!-- wide -->
-        <div class="gitem wide" data-src="https://unsplash.com/photos/PbKQCYxKZug/download?force=true&w=2400" data-title="Kegiatan & lingkungan masjid (contoh)">
-          <img alt="Galeri masjid" src="https://unsplash.com/photos/PbKQCYxKZug/download?force=true&w=1600">
-          <div class="gcap">
-            <div class="tag"><i class="bi bi-search"></i> Lihat</div>
-            <div class="hint">Masjid / lingkungan</div>
-          </div>
-        </div>
-
-        <div class="gitem" data-src="https://images.pexels.com/photos/35865718/pexels-photo-35865718.jpeg?auto=compress&cs=tinysrgb&w=2400" data-title="Suasana belajar di kelas (contoh)">
-          <img alt="Galeri kelas" src="https://images.pexels.com/photos/35865718/pexels-photo-35865718.jpeg?auto=compress&cs=tinysrgb&w=1200">
-          <div class="gcap">
-            <div class="tag"><i class="bi bi-search"></i> Lihat</div>
-            <div class="hint">Belajar</div>
-          </div>
-        </div>
-
-        <div class="gitem" data-src="https://images.pexels.com/photos/34481780/pexels-photo-34481780.jpeg?auto=compress&cs=tinysrgb&w=2400" data-title="Pembinaan mengaji (contoh)">
-          <img alt="Galeri mengaji" src="https://images.pexels.com/photos/34481780/pexels-photo-34481780.jpeg?auto=compress&cs=tinysrgb&w=1200">
-          <div class="gcap">
-            <div class="tag"><i class="bi bi-search"></i> Lihat</div>
-            <div class="hint">Mengaji</div>
-          </div>
-        </div>
-
-        <div class="gitem" data-src="https://images.pexels.com/photos/6281986/pexels-photo-6281986.jpeg?auto=compress&cs=tinysrgb&w=2400" data-title="Belajar mandiri & fokus (contoh)">
-          <img alt="Galeri belajar" src="https://images.pexels.com/photos/6281986/pexels-photo-6281986.jpeg?auto=compress&cs=tinysrgb&w=1200">
-          <div class="gcap">
-            <div class="tag"><i class="bi bi-search"></i> Lihat</div>
-            <div class="hint">Pembelajaran</div>
-          </div>
-        </div>
-
-        <div class="gitem wide" data-src="https://unsplash.com/photos/497y0gwmOnk/download?force=true&w=2400" data-title="Arsitektur masjid (contoh)">
-          <img alt="Galeri arsitektur masjid" src="https://unsplash.com/photos/497y0gwmOnk/download?force=true&w=1600">
-          <div class="gcap">
-            <div class="tag"><i class="bi bi-search"></i> Lihat</div>
-            <div class="hint">Arsitektur</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- KONTAK -->
-  <section class="section" id="kontak">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="kicker"><span class="dot accent"></span> Hubungi</div>
-          <h2 class="h3 fw-bold mb-2">Kontak & Alamat</h2>
-          <p class="text-muted mb-4">
-            Ini masih template. Ganti data di bawah biar siap ditunjukin ke customer (alamat/WA/email).
-          </p>
-
-          <div class="card-soft p-4 contact-list">
-            <div class="rowx">
-              <div class="icon-pill"><i class="bi bi-geo-alt"></i></div>
-              <div>
-                <div class="fw-bold">Alamat</div>
-                <div class="text-muted">Tugu Liyep, (isi desa/kecamatan/kabupaten), Indonesia</div>
+              <div class="pt-3 d-flex flex-wrap gap-2">
+                <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=6281234567890" target="_blank" rel="noopener">
+                  <i class="bi bi-whatsapp me-1"></i> Chat WhatsApp
+                </a>
+                <a class="btn btn-outline-accent" href="#pendaftaran">
+                  <i class="bi bi-calendar2-check me-1"></i> Jadwal Pendaftaran
+                </a>
               </div>
             </div>
+          </div>
 
-            <div class="rowx">
-              <div class="icon-pill accent"><i class="bi bi-whatsapp"></i></div>
-              <div>
-                <div class="fw-bold">WhatsApp Admin</div>
-                <div class="text-muted">+62 8xx-xxxx-xxxx</div>
+          <div class="col-lg-6">
+            <div class="map-shell">
+              <div class="map-top">
+                <div class="map-chip"><i class="bi bi-map"></i> Peta</div>
+                <div class="small text-muted">Lokasi Yayasan</div>
+              </div>
+              <div class="ratio ratio-4x3">
+                <iframe
+                  title="Peta lokasi Yayasan Nurul Hikmah Tugu Liyep"
+                  src="https://www.google.com/maps?q=Tugu%20Liyep&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </div>
-
-            <div class="rowx">
-              <div class="icon-pill"><i class="bi bi-envelope"></i></div>
-              <div>
-                <div class="fw-bold">Email</div>
-                <a class="text-decoration-none" href="mailto:admin@nuruhikmah.id">admin@nuruhikmah.id</a>
-              </div>
+            <div class="small text-muted mt-2">
+              *Ganti lokasi peta sesuai alamat lengkap/koordinat.
             </div>
-
-            <div class="pt-3 d-flex flex-wrap gap-2">
-              <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=6281234567890" target="_blank" rel="noopener">
-                <i class="bi bi-whatsapp me-1"></i> Chat WhatsApp
-              </a>
-              <a class="btn btn-outline-accent" href="#pendaftaran">
-                <i class="bi bi-calendar2-check me-1"></i> Jadwal Pendaftaran
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="map-shell">
-            <div class="map-top">
-              <div class="map-chip"><i class="bi bi-map"></i> Peta</div>
-              <div class="small text-muted">Ganti query maps sesuai alamat</div>
-            </div>
-            <div class="ratio ratio-4x3">
-              <iframe
-                src="https://www.google.com/maps?q=Tugu%20Liyep&output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-          <div class="small text-muted mt-2">
-            *Untuk presisi, ganti `Tugu Liyep` dengan alamat lengkap/koordinat.
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -940,7 +1031,7 @@
         <div class="col-lg-5">
           <div class="fw-bold mb-2">Yayasan Nurul Hikmah Tugu Liyep</div>
           <p class="text-muted mb-0">
-            Landing page statis — siap deploy di GitHub Pages.
+            Pendidikan • Pembinaan • Kegiatan Sosial
           </p>
         </div>
         <div class="col-6 col-lg-3">
@@ -956,7 +1047,7 @@
           <div class="fw-bold mb-2">Catatan</div>
           <div class="mini-note">
             <i class="bi bi-lightning-charge me-1"></i>
-            Semua warna sudah “dikunci” (override Bootstrap).
+            Tampilan responsif untuk mobile & desktop.
           </div>
         </div>
       </div>
@@ -990,17 +1081,35 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Active nav on scroll (IntersectionObserver)
-    const sections = ["home","profil","program","galeri","berita","kontak"]
+    const sectionIds = ["home","profil","program","galeri","berita","kontak"];
+    const sections = sectionIds
       .map(id => document.getElementById(id))
       .filter(Boolean);
 
     const navLinks = Array.from(document.querySelectorAll(".navbar .nav-link"));
+    const navCollapseEl = document.getElementById("mainNav");
+
     function setActive(id){
       navLinks.forEach(a => {
         const href = a.getAttribute("href") || "";
         a.classList.toggle("active", href === "#" + id);
       });
     }
+
+    // Close navbar on link click (mobile)
+    navLinks.forEach(a => {
+      a.addEventListener("click", () => {
+        const isShown = navCollapseEl.classList.contains("show");
+        if(isShown){
+          const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navCollapseEl);
+          bsCollapse.hide();
+        }
+      });
+    });
+
+    // Initial active based on hash or default
+    const initial = (location.hash || "#home").replace("#","");
+    if(sectionIds.includes(initial)) setActive(initial);
 
     const io = new IntersectionObserver((entries) => {
       const visible = entries
@@ -1009,7 +1118,7 @@
       if(visible && visible.target && visible.target.id){
         setActive(visible.target.id);
       }
-    }, { root: null, threshold: [0.25, 0.4, 0.55], rootMargin: "-20% 0px -65% 0px" });
+    }, { threshold: [0.25, 0.4, 0.55], rootMargin: "-18% 0px -66% 0px" });
 
     sections.forEach(s => io.observe(s));
 
@@ -1027,9 +1136,18 @@
         lbTitle.textContent = title;
         modal.show();
       });
+      // Aksesibilitas: bisa klik pakai keyboard
+      card.setAttribute("tabindex","0");
+      card.setAttribute("role","button");
+      card.addEventListener("keydown", (e) => {
+        if(e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          card.click();
+        }
+      });
     });
 
-    // Reset on close (biar gak makan memory)
+    // Reset on close
     modalEl.addEventListener("hidden.bs.modal", () => {
       lbImg.src = "";
       lbTitle.textContent = "Galeri";
